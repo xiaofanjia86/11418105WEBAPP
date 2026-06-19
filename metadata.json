@@ -1,0 +1,6 @@
+{
+  "name": "浪愛有家寵物認養系統",
+  "description": "提供溫馨的寵物認養平台，支援寵物伴侶篩選、線上兩步驟認養申請、個人資料檢視與編輯等功能，並串接 Firestore 進行資料管理與持久化儲存。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "Pet": {
+      "title": "Pet",
+      "description": "待認養寵物的詳細資料",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["dog", "cat"] },
+        "breed": { "type": "string" },
+        "age": { "type": "string" },
+        "gender": { "type": "string", "enum": ["公", "母"] },
+        "genderIcon": { "type": "string" },
+        "size": { "type": "string" },
+        "personality": { "type": "array" },
+        "status": { "type": "string", "enum": ["待認養", "已認養"] },
+        "story": { "type": "string" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "name", "type", "breed", "age", "gender", "size", "status", "imageUrl"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "領養人登載與編輯的個人設定資料",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" },
+        "hasPetExperience": { "type": "string", "enum": ["yes", "no"] },
+        "previousBreed": { "type": "string" },
+        "adoptionReason": { "type": "string" },
+        "otherSuggestions": { "type": "string" }
+      },
+      "required": ["uid", "name", "phone", "email", "address", "hasPetExperience", "adoptionReason"]
+    },
+    "AdoptionApplication": {
+      "title": "AdoptionApplication",
+      "description": "呈遞送出的特定領養意願申請單",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "petId": { "type": "string" },
+        "petName": { "type": "string" },
+        "petImageUrl": { "type": "string" },
+        "adopterName": { "type": "string" },
+        "adopterPhone": { "type": "string" },
+        "adopterEmail": { "type": "string" },
+        "adopterAddress": { "type": "string" },
+        "hasPetExperience": { "type": "string", "enum": ["yes", "no"] },
+        "previousBreed": { "type": "string" },
+        "adoptionReason": { "type": "string" },
+        "otherSuggestions": { "type": "string" },
+        "status": { "type": "string", "enum": ["審核中", "已同意", "已婉拒"] }
+      },
+      "required": ["petId", "petName", "adopterName", "adopterPhone", "adopterEmail", "adopterAddress", "hasPetExperience", "adoptionReason", "status"]
+    }
+  },
+  "firestore": {
+    "/pets": {
+      "schema": "Pet",
+      "description": "機構內供瀏覽且持續更新狀態的寵物集合"
+    },
+    "/user_profiles": {
+      "schema": "UserProfile",
+      "description": "透過訪客編章自訂並同步於 Firestore 的個人身分履歷設定"
+    },
+    "/applications": {
+      "schema": "AdoptionApplication",
+      "description": "全站投遞而來、並由系統志工進行實時追蹤考核的認養呈報書"
+    }
+  }
+}
